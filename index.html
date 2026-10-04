@@ -366,25 +366,38 @@
 
     <div class="order-layout" style="margin-top:50px;">
       <div class="form-card">
-        <form id="orderForm">
+       <form id="orderForm" action="https://forminit.com/f/xiuplt42dcg" method="POST" enctype="multipart/form-data">
           <div class="field">
             <label for="fullName"> 1. Full Name</label>
-            <input type="text" id="fullName" name="fullName" required placeholder="Your name">
+            <input type="text" id="fullName" name="fi-sender-fullName" required placeholder="Your name">
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="phone"> 2. Phone / WhatsApp Number</label>
-              <input type="tel" id="phone" name="phone" required placeholder="e.g. +91 98765 43210">
-            </div>
+  <label for="phone"> 2. Phone / WhatsApp Number</label>
+
+  <div class="phone-input">
+    <span class="country-code">+91</span>
+    <input
+      type="tel"
+      id="phone"
+      name="fi-sender-phone"
+      required
+      placeholder="98765 43210"
+      maxlength="10"
+      pattern="[0-9]{10}"
+      inputmode="numeric"
+    >
+  </div>
+</div>
             <div class="field">
               <label for="email"> 3. Email Address</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com">
+              <input type="email" id="email" name="fi-sender-email" required placeholder="you@example.com">
             </div>
           </div>
 
           <div class="field">
             <label for="service"> 4. Select Service</label>
-            <select id="service" name="service" required>
+            <select id="service" name="fi-select-service" required>
               <option value="" disabled selected>Choose a service</option>
               <option value="Crochet">Custom Crochet</option>
               <option value="Embroidery">Custom Embroidery</option>
@@ -401,7 +414,7 @@
 
           <div class="field">
             <label for="description"> 5. Describe What You'd Like</label>
-            <textarea id="description" name="description" required placeholder="Tell me about the design, colours, style, or story behind it..."></textarea>
+            <textarea id="description" name="fi-text-description" required placeholder="Tell me about the design, colours, style, or story behind it..."></textarea>
           </div>
 
           <div class="field">
@@ -409,8 +422,8 @@
             <div class="upload-box" id="uploadBox">
               <svg viewBox="0 0 24 24" fill="none" stroke="#833C4C" stroke-width="1.6"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
               <div>Click to upload a photo or design file</div>
-              <input type="file" id="refImage" name="refImage" accept="image/*">
-              <div class="file-name" id="fileName"></div>
+              
+              <div class="file-name" id="fileName"></div><input type="file" id="refImage" name="fi-file-referenceImage" accept="image/*">
             </div>
             <div class="hint">This helps me understand exactly what you're picturing.</div>
           </div>
@@ -418,11 +431,11 @@
           <div class="field-row">
             <div class="field">
               <label for="sizeQty"> 7. Size / Quantity</label>
-              <input type="text" id="sizeQty" name="sizeQty" placeholder="e.g. Medium, 2 pieces">
+              <input type="text" id="sizeQty" name="fi-text-sizeQty" placeholder="e.g. Medium, 2 pieces">
             </div>
             <div class="field">
               <label for="deadline"> 8. Preferred Deadline</label>
-              <input type="date" id="deadline" name="deadline">
+              <input type="date" id="deadline" name="fi-date-deadline">
             </div>
           </div>
 <!-- WHAT WOULD YOU LIKE US TO WORK ON? -->
@@ -431,7 +444,7 @@
 
     <label>
         <input type="radio"
-               name="serviceType"
+               name="fi-radio-serviceType"
                value="I have my own garment or item">
         <strong>I have my own garment or item (Starting price ₹200)</strong><br>
         <span>Send us your item and we'll create your chosen design on it.</span>
@@ -439,7 +452,7 @@
 
     <label>
         <input type="radio"
-               name="serviceType"
+               name="fi-radio-serviceType"
                value="I need the item from you">
         <strong>I need the item from you (Starting price ₹450)</strong><br>
         <span>We'll provide a suitable item and create your chosen design.</span>
@@ -447,7 +460,7 @@
 
     <label>
         <input type="radio"
-               name="serviceType"
+               name="fi-radio-serviceType"
                value="Other / Not sure">
         <strong>Other / Not sure </strong><br>
         <p>Tell us your idea and we'll help you.</p>
@@ -462,40 +475,40 @@
 
     <label>
         <input type="radio"
-               name="designPlacement"
+               name="fi-radio-designPlacement"
                value="Left Chest">
         Left Chest
     </label>
 
     <label>
         <input type="radio"
-               name="designPlacement"
+               name="fi-radio-designPlacement"
                value="Back">
         Back
     </label>
 
     <label>
         <input type="radio"
-               name="designPlacement"
+               name="fi-radio-designPlacement"
                value="Collar Area">
         Collar Area
     </label>
 
     <label>
         <input type="radio"
-               name="designPlacement"
+               name="fi-radio-designPlacement"
                value="Centre / Front">
         Centre / Front
     </label>
 
     <label>
         <input type="radio"
-               name="designPlacement"
+               name="fi-radio-designPlacement"
                value="Other">
         Other
     </label>
 </div>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Order</button>
+          <button type="submit" form="orderForm" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Order</button>
 
           <div class="confirm-box" id="confirmBox">
             Thank you! Your request is ready to send. I'll reach out to you personally on WhatsApp or email to talk through your design, confirm the final price, and plan delivery. 🧵
@@ -626,7 +639,7 @@
     </div>
   </div>
 </footer>
-
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

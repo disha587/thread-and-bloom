@@ -293,3 +293,140 @@ refImage.addEventListener("change", function () {
         fileName.textContent = refImage.files[0].name;
     }
 });
+// =========================================
+// FORMINIT ORDER SUBMISSION
+// =========================================
+
+/*document.addEventListener("DOMContentLoaded", function () {
+
+    const orderForm = document.getElementById("orderForm");
+
+    if (!orderForm) {
+        console.error("Order form not found!");
+        return;
+    }
+
+   // orderForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        console.log("ORDER FORM SUBMIT CLICKED");
+
+        const submitButton = orderForm.querySelector(
+            'button[type="submit"]'
+        );
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+        }
+
+        try {
+
+            console.log("Creating Forminit...");
+
+            const forminit = new Forminit();
+
+            console.log("Forminit loaded successfully");
+
+            const formData = new FormData(orderForm);
+
+            console.log("Sending form to Forminit...");
+
+            const result = await forminit.submit(
+                "xiuplt42dcg",
+                formData
+            );
+
+            console.log("Forminit response:", result);
+
+            if (result.error) {
+
+                console.error("Forminit error:", result.error);
+
+                alert(
+                    "Order could not be submitted:\n\n" +
+                    result.error.message
+                );
+
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Submit Order";
+                }
+
+                return;
+            }
+
+            // SUCCESS
+
+            console.log("ORDER SUBMITTED SUCCESSFULLY!");
+
+            const nameElement =
+                document.getElementById("fullName");
+
+            const successName =
+                document.getElementById("successName");
+
+            const name =
+                nameElement
+                    ? nameElement.value.trim().split(" ")[0]
+                    : "friend";
+
+            if (successName) {
+                successName.textContent = name;
+            }
+
+            orderForm.style.display = "none";
+
+            const successBox =
+                document.getElementById("formSuccess");
+
+            if (successBox) {
+                successBox.classList.add("show");
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        } catch (error) {
+
+            console.error(
+                "FORM SUBMISSION ERROR:",
+                error
+            );
+
+            alert(
+                "Something went wrong while sending your order.\n\n" +
+                error.message
+            );
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = "Submit Order";
+            }
+        }
+
+    });
+
+});*/
+// Automatically add +91 before sending the order
+document.addEventListener("DOMContentLoaded", function () {
+
+    const orderForm = document.getElementById("orderForm");
+    const phoneInput = document.getElementById("phone");
+
+    if (orderForm && phoneInput) {
+
+        orderForm.addEventListener("submit", function () {
+
+            const number = phoneInput.value.replace(/\D/g, "");
+
+            phoneInput.value = "+91" + number;
+
+        });
+
+    }
+
+});
